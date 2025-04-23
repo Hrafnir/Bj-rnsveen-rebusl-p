@@ -69,38 +69,34 @@
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
-            <!-- POST 3 (ENDRET - Kun Lyd) -->
+            <!-- POST 3 (ENDRET - Tilbake til oppgave med svar) -->
             <div id="post-3-page" class="page">
-                <h2>Post 3: Lytt Nøye 🎧</h2>
+                <h2>Post 3: Vindusjakt 👁️‍🗨️</h2>
                  <p>
                      Gå nå til <strong>Skibladner-kaia</strong>.
                  </p>
                 <p>
-                    Spill av lydfilen under. Lytt godt etter svaret – du trenger det på neste post!
+                    Se nøye på Skibladner (hvis den ligger til kai) eller bygget ved kaia. Hvor mange synlige vinduer kan dere telle totalt?
+                    <br><em>(Estimer hvis båten ikke er der, eller tell på bygget)</em>.
                 </p>
-                 <!-- Audio-element for Post 3 -->
-                <audio controls style="margin-top: 10px; margin-bottom: 20px; width: 100%;">
-                    <!-- Viktig: Endret filnavn til oppgave3.m4a -->
-                    <source src="audio/oppgave3.m4a" type="audio/mp4">
-                    <!-- Sørg for at filen audio/oppgave3.m4a finnes! -->
-                    Nettleseren din støtter ikke denne lydtypen. Spør en lærer om hjelp, svaret som trengs på neste post er bokstaven U.
-                </audio>
-                 <!-- Knapp for å gå videre manuelt -->
-                 <button id="next-post-3-btn">Gå til neste post</button>
-                <!-- Ingen input, sjekk-knapp eller feedback her -->
+                <!-- Gjeninnført input, knapp og feedback -->
+                <input type="text" id="post-3-input" placeholder="Skriv antall vinduer">
+                <button class="check-answer-btn" data-post="3">Sjekk svar</button>
+                <div class="feedback" id="feedback-3"></div>
+                 <!-- Fjernet audio og "Gå videre"-knapp -->
             </div>
 
-            <!-- POST 4 (ENDRET - Spør om svar fra Post 3) -->
+            <!-- POST 4 (ENDRET - Tilbake til opprinnelig oppgave) -->
             <div id="post-4-page" class="page">
                 <h2>Post 4: Letter Sequence 🔡</h2>
                  <p>
                      Finn frem til <strong>Gjøvik kulturhus</strong>.
                  </p>
                 <p>
-                    Hvilken bokstav hørte du i lydfilen på forrige post (Skibladner-kaia)?
+                    Der skal dere finne neste bokstav i denne sekvensen:
+                    <br> A, C, F, J, O, …
                 </p>
-                <!-- Input for å skrive inn svaret fra Post 3 -->
-                <input type="text" id="post-4-input" placeholder="Skriv bokstaven du hørte">
+                <input type="text" id="post-4-input" placeholder="Skriv neste bokstav">
                 <button class="check-answer-btn" data-post="4">Sjekk svar</button>
                 <div class="feedback" id="feedback-4"></div>
             </div>
