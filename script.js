@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const pages = document.querySelectorAll('#rebus-content .page');
     const feedbackDivs = document.querySelectorAll('.feedback');
-    const checkButtons = document.querySelectorAll('.check-answer-btn'); // Kun knapper med denne klassen
+    const checkButtons = document.querySelectorAll('.check-answer-btn');
     const allInputs = document.querySelectorAll('input[type="text"]');
 
     // Tab-elementer
@@ -12,15 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const rebusContent = document.getElementById('rebus-content');
     const mapContent = document.getElementById('map-content');
 
-    // Den nye knappen på post 3
-    const nextPost3Button = document.getElementById('next-post-3-btn');
+    // const nextPost3Button = document.getElementById('next-post-3-btn'); // Fjernet
 
-    // ----- DEFINER KODEORDENE HER (Post 3 fjernet) -----
+    // ----- DEFINER KODEORDENE HER (Post 3 lagt til) -----
     const correctCodes = {
         post1: 'UNDERSKRIFT',
         post2: 'MJØSA',
-        // post3: 'HEMMELIGHET', // Fjernet, ingen sjekk på post 3
-        post4: 'U', // Svaret fra lydfilen på post 3 sjekkes her
+        post3: '64',          // Svaret for vindus-tellingen
+        post4: 'U',
         post5: '194',
         post6: '5',
         post7: 'TEAPOT',
@@ -81,23 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
      });
 
-     // *** NY Event listener for "Gå Videre"-knappen på Post 3 ***
-     if (nextPost3Button) { // Sjekk om knappen finnes
-         nextPost3Button.addEventListener('click', () => {
-            showRebusPage('post-4-page'); // Gå direkte til neste side
-         });
-     } else {
-        console.warn("Knappen 'next-post-3-btn' ble ikke funnet.");
-     }
+     // *** Fjernet Event listener for "Gå Videre"-knappen på Post 3 ***
+     // if (nextPost3Button) { ... } // Denne blokken er fjernet
 
-    // Event listeners for alle "Sjekk svar"-knapper (vil nå ignorere post 3)
+    // Event listeners for alle "Sjekk svar"-knapper (håndterer nå post 3 som normalt)
     checkButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const postNumber = button.getAttribute('data-post'); // Får 1, 2, 4, 5, ...
+            const postNumber = button.getAttribute('data-post');
             const inputElement = document.getElementById(`post-${postNumber}-input`);
             const feedbackElement = document.getElementById(`feedback-${postNumber}`);
 
-            // Sjekk om elementene finnes (spesielt relevant hvis HTML endres uten at JS oppdateres)
             if (!inputElement || !feedbackElement) {
                 console.error(`Input eller feedback element mangler for post ${postNumber}`);
                 return;
@@ -106,12 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const userAnswer = inputElement.value.trim().toUpperCase();
             const correctCode = correctCodes[`post${postNumber}`];
 
-            // Sjekk om kodeordet finnes for denne posten (post 3 har ikke kodeord)
             if (correctCode === undefined) {
                  console.warn(`Ingen korrekt kode definert for post ${postNumber}`);
-                 return; // Ikke gjør noe hvis det ikke er et kodeord å sjekke mot
+                 return;
             }
-
 
             feedbackElement.className = 'feedback';
             feedbackElement.textContent = '';
@@ -138,13 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 setTimeout(() => {
                     const nextPostNumber = parseInt(postNumber) + 1;
-                    // Spesiell logikk for å hoppe fra post 2 til post 3 (som ikke har sjekk),
-                    // og fra post 3 (via egen knapp) til post 4.
-                    // Denne logikken håndterer nå vanlig progresjon etter en sjekk.
                     if (nextPostNumber <= 10) {
-                         // Finn neste *gyldige* post-side ID.
-                         // Dette eksempelet antar enkel +1 progresjon, men post 3 håndteres separat.
-                         // Hvis du fjerner flere poster, må logikken bli mer kompleks.
                          showRebusPage(`post-${nextPostNumber}-page`);
                     } else {
                         showRebusPage('finale-page');
@@ -169,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 const postNumber = this.id.split('-')[1];
-                // Finn knappen som har klassen 'check-answer-btn' OG riktig data-post
                 const correspondingButton = document.querySelector(`.check-answer-btn[data-post="${postNumber}"]`);
                 if (correspondingButton && !correspondingButton.disabled) {
                     correspondingButton.click();
