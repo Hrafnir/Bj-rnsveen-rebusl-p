@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rebusContent = document.getElementById('rebus-content');
     const mapContent = document.getElementById('map-content');
 
-    // ----- DEFINER KODEORDENE HER -----
+    // ----- DEFINER KODEORDENE HER (Oppdatert for post 1 & 2) -----
     const correctCodes = {
-        post1: '82',
-        post2: 'BOOKKEEPER',
+        post1: 'UNDERSKRIFT', // Kodeord fra Ståle (placeholder)
+        post2: 'MJØSA',       // Kodeord fra Mari (placeholder)
         post3: 'HEMMELIGHET',
-        post4: 'U',
+        post4: 'U',           // Antar lydfilen gir "U"
         post5: '194',
         post6: '5',
         post7: 'TEAPOT',
@@ -100,9 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // ----- ENDRING HER: Lagt til || userAnswer === 'FASIT' -----
+            // Sjekker mot riktig kode ELLER "FASIT"
             if (userAnswer === correctCode || userAnswer === 'FASIT') {
-                // Velg feedback basert på om det var FASIT eller riktig svar
                 if (userAnswer === 'FASIT') {
                      feedbackElement.textContent = 'FASIT godkjent! Hopper videre...';
                 } else {
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         showRebusPage('finale-page');
                     }
-                }, 1000); // Litt kortere ventetid når man bruker FASIT
+                }, 1000);
 
             } else {
                 feedbackElement.textContent = 'Hmm, det stemmer ikke helt. Prøv igjen!';
