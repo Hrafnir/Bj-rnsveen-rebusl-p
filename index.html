@@ -13,7 +13,8 @@
         <!-- Tab Navigasjon -->
         <div class="tabs">
             <button class="tab-button active" data-tab="rebus">Rebus</button>
-            <button class="tab-button" data-tab="kart">Kart</button>
+            <!-- ENDRET data-tab her fra "kart" til "map" for å matche div ID -->
+            <button class="tab-button" data-tab="map">Kart</button>
         </div>
 
         <!-- Innhold for Rebus -->
@@ -33,120 +34,117 @@
                 <p>
                     Følg instruksjonene nøye og bruk kartet om dere trenger det. Lykke til!
                 </p>
-                <!-- Audio-tag med autoplay og muted -->
-                <audio id="background-music" loop autoplay muted>
-                    <source src="audio/bakgrunnsmusikk.mp3" type="audio/mpeg">
-                    Nettleseren din støtter ikke lydavspilling.
-                </audio>
+                <!-- Fjernet <audio> tag for bakgrunnsmusikk -->
                 <button id="start-button">Start Rebusløpet!</button>
             </div>
 
             <!-- POST 1 -->
             <div id="post-1-page" class="page">
-                <h2>Post 1: Skolens Hjerte ❤️</h2>
+                <h2>Post 1: Aritmetisk tvist ➕➖➗</h2>
                 <p>
-                    Gå til hovedinngangen. Se på døren. Hvilket <strong>fag</strong> undervises ofte i rommet rett innenfor til venstre (tenk språk)?
+                    Regn ut: Hva er 40 ÷ ½ + 2 ?
                 </p>
-                <input type="text" id="post-1-input" placeholder="Skriv fagnavnet her">
+                <input type="text" id="post-1-input" placeholder="Skriv svaret her">
                 <button class="check-answer-btn" data-post="1">Sjekk svar</button>
                 <div class="feedback" id="feedback-1"></div>
             </div>
 
             <!-- POST 2 -->
             <div id="post-2-page" class="page">
-                <h2>Post 2: Kunnskapens Tårn 📚</h2>
+                <h2>Post 2: Triple Doubles 🤔</h2>
                 <p>
-                    Finn skolens bibliotek. Hvor mange store vinduer vender ut mot skolegården fra biblioteket? Svaret er <strong>tallet skrevet med bokstaver</strong>.
+                    Hvilket vanlig engelsk ord har tre par med doble bokstaver etter hverandre? (f.eks. ss, oo, mm)
                 </p>
-                <input type="text" id="post-2-input" placeholder="Skriv tallet med bokstaver">
+                <input type="text" id="post-2-input" placeholder="Skriv det engelske ordet">
                 <button class="check-answer-btn" data-post="2">Sjekk svar</button>
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
             <!-- POST 3 -->
             <div id="post-3-page" class="page">
-                <h2>Post 3: Idrettsglede ⚽</h2>
+                <h2>Post 3: Gjemt i åpenhet 🤫</h2>
                 <p>
-                    Gå til gymsalen. Hva slags <strong>dyr</strong> finner dere ofte avbildet på utstyr her (tenk baller, lag)?
+                    Hvis du deler meg, har du meg ikke lenger. Hva er jeg?
                 </p>
-                <input type="text" id="post-3-input" placeholder="Skriv dyrenavnet">
+                <input type="text" id="post-3-input" placeholder="Skriv løsningsordet">
                 <button class="check-answer-btn" data-post="3">Sjekk svar</button>
                 <div class="feedback" id="feedback-3"></div>
             </div>
 
             <!-- POST 4 -->
             <div id="post-4-page" class="page">
-                <h2>Post 4: Grønn Lunge 🌳</h2>
+                <h2>Post 4: Letter Sequence 🔡</h2>
                 <p>
-                    Finn det største treet i skolegården. Hvilken <strong>årstid</strong> mister dette treet bladene sine?
+                    Hvilken bokstav kommer etter O i denne sekvensen?
+                    <br> A, C, F, J, O, …
                 </p>
-                <input type="text" id="post-4-input" placeholder="Skriv årstiden">
+                <input type="text" id="post-4-input" placeholder="Skriv neste bokstav">
                 <button class="check-answer-btn" data-post="4">Sjekk svar</button>
                 <div class="feedback" id="feedback-4"></div>
             </div>
 
             <!-- POST 5 -->
             <div id="post-5-page" class="page">
-                <h2>Post 5: Kreativ Sone 🎨</h2>
+                <h2>Post 5: Sifferlogikk 🔢</h2>
                 <p>
-                    Gå til Kunst & Håndverksrommet. Hvilken <strong>farge</strong> får du hvis du blander blått og gult?
+                    Jeg er et tresifret tall. Tiersifferet er 5 større enn enersifferet. Hundrersifferet er 8 mindre enn tiersifferet. Hvilket tall er jeg?
                 </p>
-                <input type="text" id="post-5-input" placeholder="Skriv fargen">
+                <input type="text" id="post-5-input" placeholder="Skriv tallet">
                 <button class="check-answer-btn" data-post="5">Sjekk svar</button>
                 <div class="feedback" id="feedback-5"></div>
             </div>
 
              <!-- POST 6 -->
              <div id="post-6-page" class="page">
-                <h2>Post 6: Digital Verden 💻</h2>
+                <h2>Post 6: Simple Algebra 🧮</h2>
                 <p>
-                    Finn datarommet (eller et sted med mange PC-er). Hva kalles den lille pilen du styrer med musa på skjermen? (Et annet ord for 'peker')
+                    Jeg tenker på et tall. Ganger jeg det med 3 og legger til 6, får jeg 21. Hvilket tall tenker jeg på?
                 </p>
-                <input type="text" id="post-6-input" placeholder="Skriv ordet">
+                <input type="text" id="post-6-input" placeholder="Skriv tallet">
                 <button class="check-answer-btn" data-post="6">Sjekk svar</button>
                 <div class="feedback" id="feedback-6"></div>
             </div>
 
              <!-- POST 7 -->
              <div id="post-7-page" class="page">
-                <h2>Post 7: Musikkens Magi 🎶</h2>
+                <h2>Post 7: A Teapot Riddle ☕</h2>
                 <p>
-                    Gå til musikkrommet. Hva heter instrumentet med mange svarte og hvite tangenter?
+                   Hvilket engelsk ord starter med T, slutter med T, og har T (tea) inni seg?
                 </p>
-                <input type="text" id="post-7-input" placeholder="Skriv instrumentnavnet">
+                <input type="text" id="post-7-input" placeholder="Skriv det engelske ordet">
                 <button class="check-answer-btn" data-post="7">Sjekk svar</button>
                 <div class="feedback" id="feedback-7"></div>
             </div>
 
              <!-- POST 8 -->
              <div id="post-8-page" class="page">
-                <h2>Post 8: Mat og Helse 🍎</h2>
+                <h2>Post 8: Odd to Even ❓</h2>
                 <p>
-                    Finn skolekjøkkenet. Hva kalles det hvite pulveret man ofte bruker for å bake brød og kaker?
+                    Jeg er et oddetall (på engelsk). Tar du vekk én bokstav, blir jeg et partall (even). Hvilket tall er jeg?
                 </p>
-                <input type="text" id="post-8-input" placeholder="Skriv ingrediensen">
+                <input type="text" id="post-8-input" placeholder="Skriv tallet (på engelsk)">
                 <button class="check-answer-btn" data-post="8">Sjekk svar</button>
                 <div class="feedback" id="feedback-8"></div>
             </div>
 
              <!-- POST 9 -->
              <div id="post-9-page" class="page">
-                <h2>Post 9: Rektors Rike 👑</h2>
+                <h2>Post 9: Frosty Wordplay ☃️🧛</h2>
                 <p>
-                    Finn kontoret til rektor eller administrasjonen. Hva er det viktigste <strong>verktøyet</strong> en elev trenger hver dag (utenom hodet)?
+                    Hva får du (på engelsk) hvis du krysser en snømann med en vampyr?
                 </p>
-                <input type="text" id="post-9-input" placeholder="Skriv verktøyet">
+                <input type="text" id="post-9-input" placeholder="Skriv det engelske ordet">
                 <button class="check-answer-btn" data-post="9">Sjekk svar</button>
                 <div class="feedback" id="feedback-9"></div>
             </div>
 
              <!-- POST 10 -->
              <div id="post-10-page" class="page">
-                <h2>Post 10: Samlingspunktet 📣</h2>
+                <h2>Post 10: Skritt i sanden 👣</h2>
                 <p>
-                    Gå til skolens aula eller kantine (det største samlingsrommet). Hva kalles en person som jobber på skolen og underviser elever?
+                    Jo mer du tar, desto flere etterlater du. Hva er jeg?
                 </p>
-                <input type="text" id="post-10-input" placeholder="Skriv yrkestittelen">
+                <input type="text" id="post-10-input" placeholder="Skriv løsningsordet">
                 <button class="check-answer-btn" data-post="10">Sjekk svar</button>
                 <div class="feedback" id="feedback-10"></div>
             </div>
@@ -168,6 +166,7 @@
         </div> <!-- Slutt på rebus-content -->
 
         <!-- Innhold for Kart -->
+        <!-- ID her er "map-content", som nå matcher data-tab="map" -->
         <div id="map-content" class="tab-content">
             <h2>Kart over området</h2>
             <p>Bruk dette kartet for å finne frem til postene.</p>
