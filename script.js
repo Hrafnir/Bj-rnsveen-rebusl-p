@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rebusContent = document.getElementById('rebus-content');
     const mapContent = document.getElementById('map-content');
 
-    // const nextPost3Button = document.getElementById('next-post-3-btn'); // Fjernet
-
-    // ----- DEFINER KODEORDENE HER (Post 3 lagt til) -----
+    // ----- DEFINER KODEORDENE HER (Post 3 = 64) -----
     const correctCodes = {
         post1: 'UNDERSKRIFT',
         post2: 'MJØSA',
-        post3: '64',          // Svaret for vindus-tellingen
+        post3: '64',          // Svaret fra oppgaven i lydfilen
         post4: 'U',
         post5: '194',
         post6: '5',
@@ -80,10 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
      });
 
-     // *** Fjernet Event listener for "Gå Videre"-knappen på Post 3 ***
-     // if (nextPost3Button) { ... } // Denne blokken er fjernet
-
-    // Event listeners for alle "Sjekk svar"-knapper (håndterer nå post 3 som normalt)
+    // Event listeners for alle "Sjekk svar"-knapper
     checkButtons.forEach(button => {
         button.addEventListener('click', () => {
             const postNumber = button.getAttribute('data-post');
