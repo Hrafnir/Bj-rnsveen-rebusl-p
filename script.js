@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Hent referanser til HTML-elementer
     const startButton = document.getElementById('start-button');
-    // const backgroundMusic = document.getElementById('background-music'); // Fjernet
-    const pages = document.querySelectorAll('#rebus-content .page'); // Sider INNE i rebus-content
+    const pages = document.querySelectorAll('#rebus-content .page');
     const feedbackDivs = document.querySelectorAll('.feedback');
     const checkButtons = document.querySelectorAll('.check-answer-btn');
     const allInputs = document.querySelectorAll('input[type="text"]');
@@ -36,6 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextPage = document.getElementById(pageId);
         if (nextPage) {
             nextPage.classList.add('visible');
+             // Scroll til toppen av containeren når en ny side vises
+             const container = document.querySelector('.container');
+             if (container) {
+                 // container.scrollTop = 0; // Virker best hvis container har fast høyde og scroll
+                 // For hel side scroll:
+                 window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' }); // Scroll til litt over toppen av container
+             }
+
         } else {
             console.error("Kunne ikke finne rebus-side med ID:", pageId);
         }
@@ -46,12 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContents.forEach(content => {
             content.classList.remove('visible');
         });
-        // Finner ID basert på data-tab (som nå er 'rebus' eller 'map')
         const nextContent = document.getElementById(tabId + '-content');
         if (nextContent) {
             nextContent.classList.add('visible');
         } else {
-            // Denne feilmeldingen skal ikke lenger vises for kartet
             console.error("Kunne ikke finne tab-innhold med ID:", tabId + '-content');
         }
 
@@ -64,19 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
      }
 
-    // --- Musikk Håndtering ---
-    // All kode relatert til backgroundMusic er fjernet
-
     // Event listener for startknappen
     startButton.addEventListener('click', () => {
-        // Ingen musikk-kode her lenger
-        showRebusPage('post-1-page'); // Vis første post i rebusen
+        showRebusPage('post-1-page');
     });
 
      // Event listeners for Tab-knapper
      tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const tabId = button.getAttribute('data-tab'); // Får 'rebus' eller 'map'
+            const tabId = button.getAttribute('data-tab');
             showTabContent(tabId);
         });
      });
@@ -87,47 +88,47 @@ document.addEventListener('DOMContentLoaded', () => {
             const postNumber = button.getAttribute('data-post');
             const inputElement = document.getElementById(`post-${postNumber}-input`);
             const feedbackElement = document.getElementById(`feedback-${postNumber}`);
-            const userAnswer = inputElement.value.trim().toUpperCase(); // Bruker fortsatt toUpperCase
+            const userAnswer = inputElement.value.trim().toUpperCase();
             const correctCode = correctCodes[`post${postNumber}`];
+
+            // Fjern tidligere feedback klasser for å unngå feil farge/bakgrunn
+            feedbackElement.className = 'feedback'; // Reset klasser
+            feedbackElement.textContent = ''; // Tøm tekst
 
             if (!userAnswer) {
                 feedbackElement.textContent = 'Du må skrive inn et svar!';
-                feedbackElement.className = 'feedback error shake';
-                setTimeout(() => feedbackElement.classList.remove('shake'), 500);
+                feedbackElement.classList.add('error', 'shake'); // Legg til error og shake
+                setTimeout(() => feedbackElement.classList.remove('shake'), 400);
                 inputElement.classList.add('shake');
-                setTimeout(() => inputElement.classList.remove('shake'), 500);
+                setTimeout(() => inputElement.classList.remove('shake'), 400);
                 return;
             }
 
             if (userAnswer === correctCode) {
                 feedbackElement.textContent = 'Helt riktig! 👍 Bra jobba!';
-                feedbackElement.className = 'feedback success';
+                 feedbackElement.classList.add('success'); // Legg til success klasse
 
                 // Deaktiver input og knapp etter korrekt svar
                 inputElement.disabled = true;
-                button.disabled = true;
-                button.style.backgroundColor = '#aaa'; // Grå ut knappen
+                button.disabled = true; // JS setter disabled, CSS styler den
 
                 setTimeout(() => {
                     const nextPostNumber = parseInt(postNumber) + 1;
-                    // Gå til neste post ELLER finale
-                    if (nextPostNumber <= 10) { // Sjekker fortsatt opp til 10
+                    if (nextPostNumber <= 10) {
                         showRebusPage(`post-${nextPostNumber}-page`);
                     } else {
                         showRebusPage('finale-page');
-                        // Ingen musikk å stoppe her lenger
                     }
-                    // Ikke tøm input eller feedback, siden de er deaktivert
-                }, 1500); // Vent litt før siden byttes
+                }, 1500);
 
             } else {
                 feedbackElement.textContent = 'Hmm, det stemmer ikke helt. Prøv igjen!';
-                feedbackElement.className = 'feedback error shake';
-                setTimeout(() => feedbackElement.classList.remove('shake'), 500);
+                 feedbackElement.classList.add('error', 'shake'); // Legg til error og shake
+                setTimeout(() => feedbackElement.classList.remove('shake'), 400);
                 inputElement.classList.add('shake');
-                setTimeout(() => inputElement.classList.remove('shake'), 500);
-                inputElement.focus(); // Sett fokus tilbake til inputfeltet
-                inputElement.select(); // Marker teksten for enkel overskriving
+                setTimeout(() => inputElement.classList.remove('shake'), 400);
+                inputElement.focus();
+                inputElement.select();
             }
         });
     });
@@ -135,14 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
      // Event listeners for Enter-tast i input-felt
      allInputs.forEach(input => {
         input.addEventListener('keypress', function (event) {
-            // Sjekk om tasten som ble trykket er Enter
             if (event.key === 'Enter') {
-                // Forhindre standard handling (som kan være form submit hvis det var en form)
                 event.preventDefault();
-                // Finn den tilhørende knappen og trigg et klikk
-                const postNumber = this.id.split('-')[1]; // Henter tallet fra id="post-X-input"
+                const postNumber = this.id.split('-')[1];
                 const correspondingButton = document.querySelector(`.check-answer-btn[data-post="${postNumber}"]`);
-                if (correspondingButton && !correspondingButton.disabled) { // Sjekk at knappen finnes og ikke er deaktivert
+                if (correspondingButton && !correspondingButton.disabled) {
                     correspondingButton.click();
                 }
             }
@@ -151,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Sørg for at riktig tab og side vises ved start
-    showTabContent('rebus'); // Vis rebus-taben
-    showRebusPage('intro-page'); // Vis intro-siden i rebusen
+    showTabContent('rebus');
+    showRebusPage('intro-page');
 
 }); // Slutt på DOMContentLoaded
