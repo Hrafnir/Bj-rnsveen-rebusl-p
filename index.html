@@ -35,7 +35,7 @@
                 <button id="start-button">Start Rebusløpet!</button>
             </div>
 
-            <!-- POST 1 (ENDRET) -->
+            <!-- POST 1 -->
             <div id="post-1-page" class="page">
                  <h2>Post 1: Opprop for Uniformer ✍️</h2>
                  <p>
@@ -55,7 +55,7 @@
                  <div class="feedback" id="feedback-1"></div>
              </div>
 
-            <!-- POST 2 (ENDRET) -->
+            <!-- POST 2 -->
             <div id="post-2-page" class="page">
                 <h2>Post 2: Jakten på Mari 🤔</h2>
                  <p>
@@ -69,41 +69,43 @@
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
-            <!-- POST 3 (UENDRET) -->
+            <!-- POST 3 (ENDRET - Kun Lyd) -->
             <div id="post-3-page" class="page">
-                <h2>Post 3: Gjemt i åpenhet 🤫</h2>
+                <h2>Post 3: Lytt Nøye 🎧</h2>
                  <p>
                      Gå nå til <strong>Skibladner-kaia</strong>.
                  </p>
                 <p>
-                    Tenk nøye: Hvis du deler meg, har du meg ikke lenger. Hva er jeg?
+                    Spill av lydfilen under. Lytt godt etter svaret – du trenger det på neste post!
                 </p>
-                <input type="text" id="post-3-input" placeholder="Skriv løsningsordet">
-                <button class="check-answer-btn" data-post="3">Sjekk svar</button>
-                <div class="feedback" id="feedback-3"></div>
+                 <!-- Audio-element for Post 3 -->
+                <audio controls style="margin-top: 10px; margin-bottom: 20px; width: 100%;">
+                    <!-- Viktig: Endret filnavn til oppgave3.m4a -->
+                    <source src="audio/oppgave3.m4a" type="audio/mp4">
+                    <!-- Sørg for at filen audio/oppgave3.m4a finnes! -->
+                    Nettleseren din støtter ikke denne lydtypen. Spør en lærer om hjelp, svaret som trengs på neste post er bokstaven U.
+                </audio>
+                 <!-- Knapp for å gå videre manuelt -->
+                 <button id="next-post-3-btn">Gå til neste post</button>
+                <!-- Ingen input, sjekk-knapp eller feedback her -->
             </div>
 
-            <!-- POST 4 (ENDRET) -->
+            <!-- POST 4 (ENDRET - Spør om svar fra Post 3) -->
             <div id="post-4-page" class="page">
-                <h2>Post 4: Lytt Nøye 🎧</h2>
+                <h2>Post 4: Letter Sequence 🔡</h2>
                  <p>
                      Finn frem til <strong>Gjøvik kulturhus</strong>.
                  </p>
                 <p>
-                    Spill av lydfilen under for å få neste ledetråd. Hvilken bokstav er det snakk om?
+                    Hvilken bokstav hørte du i lydfilen på forrige post (Skibladner-kaia)?
                 </p>
-                <!-- Audio-element lagt til -->
-                <audio controls style="margin-top: 10px; width: 100%;">
-                    <source src="audio/oppgave4.m4a" type="audio/mp4">
-                    <!-- Viktig: Sørg for at filen audio/oppgave4.m4a finnes! -->
-                    Nettleseren din støtter ikke denne lydtypen. Kodeordet er U.
-                </audio>
+                <!-- Input for å skrive inn svaret fra Post 3 -->
                 <input type="text" id="post-4-input" placeholder="Skriv bokstaven du hørte">
                 <button class="check-answer-btn" data-post="4">Sjekk svar</button>
                 <div class="feedback" id="feedback-4"></div>
             </div>
 
-            <!-- POST 5 (UENDRET) -->
+            <!-- POST 5 -->
             <div id="post-5-page" class="page">
                 <h2>Post 5: Sifferlogikk 🔢</h2>
                  <p>
@@ -117,7 +119,7 @@
                 <div class="feedback" id="feedback-5"></div>
             </div>
 
-             <!-- POST 6 (UENDRET) -->
+             <!-- POST 6 -->
              <div id="post-6-page" class="page">
                 <h2>Post 6: Simple Algebra 🧮</h2>
                  <p>
@@ -131,7 +133,7 @@
                 <div class="feedback" id="feedback-6"></div>
             </div>
 
-             <!-- POST 7 (UENDRET) -->
+             <!-- POST 7 -->
              <div id="post-7-page" class="page">
                 <h2>Post 7: A Teapot Riddle ☕</h2>
                  <p>
@@ -145,7 +147,7 @@
                 <div class="feedback" id="feedback-7"></div>
             </div>
 
-             <!-- POST 8 (UENDRET) -->
+             <!-- POST 8 -->
              <div id="post-8-page" class="page">
                 <h2>Post 8: Odd to Even ❓</h2>
                  <p>
@@ -159,7 +161,7 @@
                 <div class="feedback" id="feedback-8"></div>
             </div>
 
-             <!-- POST 9 (UENDRET) -->
+             <!-- POST 9 -->
              <div id="post-9-page" class="page">
                 <h2>Post 9: Frosty Wordplay ☃️🧛</h2>
                  <p>
@@ -173,7 +175,7 @@
                 <div class="feedback" id="feedback-9"></div>
             </div>
 
-             <!-- POST 10 (UENDRET) -->
+             <!-- POST 10 -->
              <div id="post-10-page" class="page">
                 <h2>Post 10: Skritt i sanden 👣</h2>
                  <p>
@@ -186,7 +188,6 @@
                 <button class="check-answer-btn" data-post="10">Sjekk svar</button>
                 <div class="feedback" id="feedback-10"></div>
             </div>
-
 
             <!-- FINALE -->
             <div id="finale-page" class="page">
