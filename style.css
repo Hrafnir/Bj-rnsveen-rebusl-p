@@ -1,185 +1,236 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Hent referanser til HTML-elementer
-    const startButton = document.getElementById('start-button');
-    const pages = document.querySelectorAll('#rebus-content .page');
-    const feedbackDivs = document.querySelectorAll('.feedback');
-    const checkButtons = document.querySelectorAll('.check-answer-btn'); // Kun knapper med denne klassen
-    const allInputs = document.querySelectorAll('input[type="text"]');
+/* Generell styling */
+body {
+    /* Renere font-stack */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f4f4f4; /* Lys grå bakgrunn */
+    color: #333; /* Mørk grå tekst */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
 
-    // Tab-elementer
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const rebusContent = document.getElementById('rebus-content');
-    const mapContent = document.getElementById('map-content');
+.container {
+    background-color: #ffffff; /* Hvit container */
+    padding: 25px;
+    border-radius: 10px; /* Litt mindre avrunding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Tydeligere skygge */
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #dee2e6; /* Subtil grå kant */
+}
 
-    // Den nye knappen på post 3
-    const nextPost3Button = document.getElementById('next-post-3-btn');
+/* --- Tab Navigasjon --- */
+.tabs {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #dee2e6; /* Tynnere grå linje */
+    padding-bottom: 10px;
+}
 
-    // ----- DEFINER KODEORDENE HER (Post 3 fjernet) -----
-    const correctCodes = {
-        post1: 'UNDERSKRIFT',
-        post2: 'MJØSA',
-        // post3: 'HEMMELIGHET', // Fjernet, ingen sjekk på post 3
-        post4: 'U', // Svaret fra lydfilen på post 3 sjekkes her
-        post5: '194',
-        post6: '5',
-        post7: 'TEAPOT',
-        post8: 'SEVEN',
-        post9: 'FROSTBITE',
-        post10: 'FOTSPOR'
-    };
-    // ------------------------------------
+.tab-button {
+    background-color: #e9ecef; /* Lys grå inaktiv */
+    color: #495057; /* Mørkere grå tekst */
+    padding: 10px 20px;
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0; /* Litt mindre avrunding */
+    cursor: pointer;
+    font-size: 1em; /* Justert størrelse */
+    font-weight: 600; /* Semi-bold */
+    margin: 0 4px -2px 0; /* Justert margin */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    position: relative;
+    bottom: -2px; /* Justert posisjon */
+}
 
-    // Funksjon for å vise en spesifikk REBUS-side og skjule resten
-    function showRebusPage(pageId) {
-        pages.forEach(page => {
-            page.classList.remove('visible');
-        });
-        const nextPage = document.getElementById(pageId);
-        if (nextPage) {
-            nextPage.classList.add('visible');
-             const container = document.querySelector('.container');
-             if (container) {
-                 window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
-             }
-        } else {
-            console.error("Kunne ikke finne rebus-side med ID:", pageId);
-        }
-    }
+.tab-button:hover {
+    background-color: #dee2e6; /* Litt mørkere grå ved hover */
+    color: #212529;
+}
 
-     // Funksjon for å bytte mellom hoved-tabs (Rebus/Kart)
-     function showTabContent(tabId) {
-        tabContents.forEach(content => {
-            content.classList.remove('visible');
-        });
-        const nextContent = document.getElementById(tabId + '-content');
-        if (nextContent) {
-            nextContent.classList.add('visible');
-        } else {
-            console.error("Kunne ikke finne tab-innhold med ID:", tabId + '-content');
-        }
+.tab-button.active {
+    background-color: #ffffff; /* Hvit aktiv bakgrunn */
+    color: #0056b3; /* Mørkeblå aktiv tekst */
+    border-bottom: 2px solid #ffffff; /* Skjul bunnkant bedre */
+}
 
-        // Oppdater aktiv knapp
-        tabButtons.forEach(button => {
-            button.classList.remove('active');
-            if (button.getAttribute('data-tab') === tabId) {
-                button.classList.add('active');
-            }
-        });
-     }
+/* --- Tab Innhold --- */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
 
-    // Event listener for startknappen
-    startButton.addEventListener('click', () => {
-        showRebusPage('post-1-page');
-    });
-
-     // Event listeners for Tab-knapper
-     tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tabId = button.getAttribute('data-tab');
-            showTabContent(tabId);
-        });
-     });
-
-     // *** NY Event listener for "Gå Videre"-knappen på Post 3 ***
-     if (nextPost3Button) { // Sjekk om knappen finnes
-         nextPost3Button.addEventListener('click', () => {
-            showRebusPage('post-4-page'); // Gå direkte til neste side
-         });
-     } else {
-        console.warn("Knappen 'next-post-3-btn' ble ikke funnet.");
-     }
-
-    // Event listeners for alle "Sjekk svar"-knapper (vil nå ignorere post 3)
-    checkButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const postNumber = button.getAttribute('data-post'); // Får 1, 2, 4, 5, ...
-            const inputElement = document.getElementById(`post-${postNumber}-input`);
-            const feedbackElement = document.getElementById(`feedback-${postNumber}`);
-
-            // Sjekk om elementene finnes (spesielt relevant hvis HTML endres uten at JS oppdateres)
-            if (!inputElement || !feedbackElement) {
-                console.error(`Input eller feedback element mangler for post ${postNumber}`);
-                return;
-            }
-
-            const userAnswer = inputElement.value.trim().toUpperCase();
-            const correctCode = correctCodes[`post${postNumber}`];
-
-            // Sjekk om kodeordet finnes for denne posten (post 3 har ikke kodeord)
-            if (correctCode === undefined) {
-                 console.warn(`Ingen korrekt kode definert for post ${postNumber}`);
-                 return; // Ikke gjør noe hvis det ikke er et kodeord å sjekke mot
-            }
+.tab-content.visible {
+    display: block;
+}
 
 
-            feedbackElement.className = 'feedback';
-            feedbackElement.textContent = '';
+/* Rebus sider */
+.page {
+    display: none;
+}
 
-            if (!userAnswer) {
-                feedbackElement.textContent = 'Du må skrive inn et svar!';
-                feedbackElement.classList.add('error', 'shake');
-                setTimeout(() => feedbackElement.classList.remove('shake'), 400);
-                inputElement.classList.add('shake');
-                setTimeout(() => inputElement.classList.remove('shake'), 400);
-                return;
-            }
+.page.visible {
+    display: block;
+}
 
-            if (userAnswer === correctCode || userAnswer === 'FASIT') {
-                if (userAnswer === 'FASIT') {
-                     feedbackElement.textContent = 'FASIT godkjent! Hopper videre...';
-                } else {
-                     feedbackElement.textContent = 'Helt riktig! 👍 Bra jobba!';
-                }
-                feedbackElement.classList.add('success');
+/* Animasjon for fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-                inputElement.disabled = true;
-                button.disabled = true;
 
-                setTimeout(() => {
-                    const nextPostNumber = parseInt(postNumber) + 1;
-                    // Spesiell logikk for å hoppe fra post 2 til post 3 (som ikke har sjekk),
-                    // og fra post 3 (via egen knapp) til post 4.
-                    // Denne logikken håndterer nå vanlig progresjon etter en sjekk.
-                    if (nextPostNumber <= 10) {
-                         // Finn neste *gyldige* post-side ID.
-                         // Dette eksempelet antar enkel +1 progresjon, men post 3 håndteres separat.
-                         // Hvis du fjerner flere poster, må logikken bli mer kompleks.
-                         showRebusPage(`post-${nextPostNumber}-page`);
-                    } else {
-                        showRebusPage('finale-page');
-                    }
-                }, 1000);
+/* Overskrifter */
+h1 {
+    color: #0056b3; /* Mørkeblå */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
 
-            } else {
-                feedbackElement.textContent = 'Hmm, det stemmer ikke helt. Prøv igjen!';
-                 feedbackElement.classList.add('error', 'shake');
-                setTimeout(() => feedbackElement.classList.remove('shake'), 400);
-                inputElement.classList.add('shake');
-                setTimeout(() => inputElement.classList.remove('shake'), 400);
-                inputElement.focus();
-                inputElement.select();
-            }
-        });
-    });
+h2 {
+    color: #495057; /* Mørk grå */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid #eee; /* Lett linje under h2 */
+    padding-bottom: 8px;
+}
 
-     // Event listeners for Enter-tast i input-felt
-     allInputs.forEach(input => {
-        input.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                const postNumber = this.id.split('-')[1];
-                // Finn knappen som har klassen 'check-answer-btn' OG riktig data-post
-                const correspondingButton = document.querySelector(`.check-answer-btn[data-post="${postNumber}"]`);
-                if (correspondingButton && !correspondingButton.disabled) {
-                    correspondingButton.click();
-                }
-            }
-        });
-     });
+/* Bilde */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
 
-    // Sørg for at riktig tab og side vises ved start
-    showTabContent('rebus');
-    showRebusPage('intro-page');
+/* Paragrafer */
+p {
+    line-height: 1.7; /* Litt mer luft */
+    margin-bottom: 15px;
+    font-size: 1.05em; /* Litt mindre enn før, men standard */
+    text-align: left; /* Mer lesbart for instruksjoner */
+}
+/* Sentrer intro-tekst og finale-tekst */
+#intro-page p, #finale-page p, #map-content p {
+    text-align: center;
+}
 
-}); // Slutt på DOMContentLoaded
+
+strong {
+    color: #0056b3; /* Mørkeblå for utheving */
+    font-weight: 600;
+}
+
+/* Input-felt */
+input[type="text"] {
+    padding: 12px 15px;
+    margin-top: 10px;
+    border: 1px solid #ced4da; /* Standard grå kant */
+    border-radius: 6px;
+    width: calc(100% - 32px); /* Full bredde minus padding */
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: border-color 0.2s ease;
+}
+input[type="text"]:focus {
+    border-color: #86b7fe; /* Blå kant ved fokus */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Risting for input-felt */
+input[type="text"].shake {
+    animation: shake 0.5s;
+}
+
+
+/* Knapper */
+button {
+    background-color: #007bff; /* Klar blå */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+    background-color: #0056b3; /* Mørkere blå ved hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+button:disabled {
+     background-color: #adb5bd; /* Grå ut deaktivert knapp */
+     cursor: not-allowed;
+     box-shadow: none;
+}
+
+/* Unntak for tab-knapper */
+.tab-button {
+     margin-top: 0;
+     box-shadow: none; /* Ingen skygge på tabs */
+     font-weight: 600;
+}
+.tab-button:hover {
+    background-color: #dee2e6;
+    box-shadow: none;
+}
+.tab-button.active {
+     background-color: #ffffff;
+     color: #0056b3;
+     box-shadow: none;
+}
+.tab-button.active:hover {
+    background-color: #ffffff; /* Beholder farge ved hover når aktiv */
+}
+
+
+#start-button {
+    background-color: #007bff; /* Samme blå som andre knapper */
+    font-size: 1.2em; /* Litt større */
+    padding: 14px 35px;
+}
+#start-button:hover {
+    background-color: #0056b3;
+}
+
+/* Tilbakemeldinger */
+.feedback {
+    margin-top: 18px;
+    font-weight: 600;
+    min-height: 22px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.feedback.success {
+    color: #146c43; /* Mørkere grønn for suksess */
+    background-color: #d1e7dd; /* Lys grønn bakgrunn */
+    border: 1px solid #a3cfbb;
+}
+
+.feedback.error {
+    color: #b02a37; /* Mørkere rød for feil */
+    background-color: #f8d7da; /* Lys rød bakgrunn */
+    border: 1px solid #f1aeb5;
+}
+
+/* Riste-animasjon */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+}
+
+/* Riste-klassen som legges til av JS */
+.feedback.shake, input.shake {
+    animation: shake 0.4s; /* Litt raskere risting */
+}
