@@ -1,78 +1,78 @@
 /* Generell styling */
 body {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif; /* Lystig font */
-    background-color: #FFFACD; /* Lys gul bakgrunn (LemonChiffon) */
-    color: #333;
+    /* Renere font-stack */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f4f4f4; /* Lys grå bakgrunn */
+    color: #333; /* Mørk grå tekst */
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Juster til toppen for lange sider */
+    align-items: flex-start;
     min-height: 100vh;
 }
 
 .container {
-    background-color: #FFD700; /* Gyllen gul (Gold) */
+    background-color: #ffffff; /* Hvit container */
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Litt mindre avrunding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Tydeligere skygge */
     max-width: 600px;
     width: 100%;
     text-align: center;
-    border: 5px dashed #FFA500; /* Oransje stiplet kant */
+    border: 1px solid #dee2e6; /* Subtil grå kant */
 }
 
 /* --- Tab Navigasjon --- */
 .tabs {
-    margin-bottom: 20px;
-    border-bottom: 3px solid #FFA500; /* Linje under tabs */
+    margin-bottom: 25px;
+    border-bottom: 2px solid #dee2e6; /* Tynnere grå linje */
     padding-bottom: 10px;
 }
 
 .tab-button {
-    background-color: #f0f0f0; /* Lys grå inaktiv */
-    color: #FFA500; /* Oransje tekst */
+    background-color: #e9ecef; /* Lys grå inaktiv */
+    color: #495057; /* Mørkere grå tekst */
     padding: 10px 20px;
-    border: 1px solid #FFA500;
-    border-bottom: none; /* Fjerner bunn-kant */
-    border-radius: 10px 10px 0 0; /* Runde hjørner øverst */
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0; /* Litt mindre avrunding */
     cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    margin: 0 5px -1px 0; /* Litt mellomrom, negativ margin for å overlappe bunnlinjen */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1em; /* Justert størrelse */
+    font-weight: 600; /* Semi-bold */
+    margin: 0 4px -2px 0; /* Justert margin */
+    transition: background-color 0.2s ease, color 0.2s ease;
     position: relative;
-    bottom: -1px; /* Flytter litt ned for bedre overlapp */
+    bottom: -2px; /* Justert posisjon */
 }
 
 .tab-button:hover {
-    background-color: #e0e0e0;
+    background-color: #dee2e6; /* Litt mørkere grå ved hover */
+    color: #212529;
 }
 
 .tab-button.active {
-    background-color: #FFD700; /* Samme som container for aktiv */
-    color: #FF4500; /* Oransjerød aktiv tekst */
-    border-bottom: 1px solid #FFD700; /* Skjul bunnkant på aktiv tab */
+    background-color: #ffffff; /* Hvit aktiv bakgrunn */
+    color: #0056b3; /* Mørkeblå aktiv tekst */
+    border-bottom: 2px solid #ffffff; /* Skjul bunnkant bedre */
 }
 
 /* --- Tab Innhold --- */
 .tab-content {
-    display: none; /* Skjul innhold som standard */
-    animation: fadeIn 0.5s ease-in-out; /* Liten fade-in effekt */
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .tab-content.visible {
-    display: block; /* Vis aktivt innhold */
+    display: block;
 }
 
 
-/* Skjul alle "sider" i rebusen som standard */
+/* Rebus sider */
 .page {
     display: none;
-    /* animation: fadeIn 0.5s ease-in-out; Fades inn via tab-content nå */
 }
 
-/* Vis den aktive siden i rebusen */
 .page.visible {
     display: block;
 }
@@ -86,43 +86,60 @@ body {
 
 /* Overskrifter */
 h1 {
-    color: #FF4500; /* Oransjerød */
-    margin-bottom: 15px;
+    color: #0056b3; /* Mørkeblå */
+    margin-bottom: 20px;
+    font-size: 1.8em;
 }
 
 h2 {
-    color: #4CAF50; /* Grønn */
-    margin-top: 20px;
-    margin-bottom: 10px;
+    color: #495057; /* Mørk grå */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid #eee; /* Lett linje under h2 */
+    padding-bottom: 8px;
 }
 
-/* Bilde (generisk, kan brukes til logo/kart etc.) */
+/* Bilde */
 img {
-    max-width: 100%; /* Sørger for at bilder ikke blir for store */
+    max-width: 100%;
     height: auto;
     margin-bottom: 15px;
 }
 
 /* Paragrafer */
 p {
-    line-height: 1.6;
+    line-height: 1.7; /* Litt mer luft */
     margin-bottom: 15px;
-    font-size: 1.1em; /* Litt større tekst */
+    font-size: 1.05em; /* Litt mindre enn før, men standard */
+    text-align: left; /* Mer lesbart for instruksjoner */
+}
+/* Sentrer intro-tekst og finale-tekst */
+#intro-page p, #finale-page p, #map-content p {
+    text-align: center;
 }
 
+
 strong {
-    color: #E63946; /* En annen farge for utheving */
+    color: #0056b3; /* Mørkeblå for utheving */
+    font-weight: 600;
 }
 
 /* Input-felt */
 input[type="text"] {
-    padding: 12px;
+    padding: 12px 15px;
     margin-top: 10px;
-    border: 2px solid #FFA500; /* Oransje kant */
-    border-radius: 8px;
-    width: calc(100% - 30px); /* Litt mindre enn full bredde */
+    border: 1px solid #ced4da; /* Standard grå kant */
+    border-radius: 6px;
+    width: calc(100% - 32px); /* Full bredde minus padding */
     font-size: 1em;
-    text-transform: uppercase; /* Gjør om til store bokstaver automatisk */
+    text-transform: uppercase;
+    transition: border-color 0.2s ease;
+}
+input[type="text"]:focus {
+    border-color: #86b7fe; /* Blå kant ved fokus */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* Risting for input-felt */
@@ -133,81 +150,87 @@ input[type="text"].shake {
 
 /* Knapper */
 button {
-    background-color: #4CAF50; /* Grønn */
+    background-color: #007bff; /* Klar blå */
     color: white;
     padding: 12px 25px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.05em;
+    font-weight: 600;
     margin-top: 15px;
-    transition: background-color 0.3s ease;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 button:hover {
-    background-color: #45a049; /* Litt mørkere grønn ved hover */
+    background-color: #0056b3; /* Mørkere blå ved hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+button:disabled {
+     background-color: #adb5bd; /* Grå ut deaktivert knapp */
+     cursor: not-allowed;
+     box-shadow: none;
 }
 
 /* Unntak for tab-knapper */
 .tab-button {
-     /* Stiler er definert lenger oppe */
-     margin-top: 0; /* Override generell knapp margin */
-     box-shadow: none;
+     margin-top: 0;
+     box-shadow: none; /* Ingen skygge på tabs */
+     font-weight: 600;
 }
 .tab-button:hover {
-    background-color: #e0e0e0; /* Override generell hover */
+    background-color: #dee2e6;
+    box-shadow: none;
 }
 .tab-button.active {
-     background-color: #FFD700;
-     color: #FF4500;
+     background-color: #ffffff;
+     color: #0056b3;
+     box-shadow: none;
 }
 .tab-button.active:hover {
-    background-color: #FFD700; /* Beholder farge ved hover når aktiv */
+    background-color: #ffffff; /* Beholder farge ved hover når aktiv */
 }
 
 
 #start-button {
-    background-color: #FF4500; /* Oransjerød startknapp */
-    font-size: 1.3em;
-    padding: 15px 30px;
+    background-color: #007bff; /* Samme blå som andre knapper */
+    font-size: 1.2em; /* Litt større */
+    padding: 14px 35px;
 }
-
 #start-button:hover {
-    background-color: #e03e00;
+    background-color: #0056b3;
 }
 
 /* Tilbakemeldinger */
 .feedback {
-    margin-top: 15px;
-    font-weight: bold;
-    min-height: 20px; /* Sørger for at layout ikke hopper for mye */
+    margin-top: 18px;
+    font-weight: 600;
+    min-height: 22px;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .feedback.success {
-    color: #4CAF50; /* Grønn for suksess */
+    color: #146c43; /* Mørkere grønn for suksess */
+    background-color: #d1e7dd; /* Lys grønn bakgrunn */
+    border: 1px solid #a3cfbb;
 }
 
 .feedback.error {
-    color: #E63946; /* Rød for feil */
+    color: #b02a37; /* Mørkere rød for feil */
+    background-color: #f8d7da; /* Lys rød bakgrunn */
+    border: 1px solid #f1aeb5;
 }
 
 /* Riste-animasjon */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
 }
 
 /* Riste-klassen som legges til av JS */
 .feedback.shake, input.shake {
-    animation: shake 0.5s;
+    animation: shake 0.4s; /* Litt raskere risting */
 }
-
-
-/* Skjul standard lydkontroller (valgfritt) */
-/* #background-music { */
-/*     display: none; */ /* Kan fjernes helt nå */
-/* } */
