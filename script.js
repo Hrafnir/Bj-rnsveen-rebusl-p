@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rebusContent = document.getElementById('rebus-content');
     const mapContent = document.getElementById('map-content');
 
-    // ----- DEFINER KODEORDENE HER (NYE) -----
+    // ----- DEFINER KODEORDENE HER -----
     const correctCodes = {
         post1: '82',
         post2: 'BOOKKEEPER',
@@ -35,12 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextPage = document.getElementById(pageId);
         if (nextPage) {
             nextPage.classList.add('visible');
-             // Scroll til toppen av containeren når en ny side vises
              const container = document.querySelector('.container');
              if (container) {
-                 // container.scrollTop = 0; // Virker best hvis container har fast høyde og scroll
-                 // For hel side scroll:
-                 window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' }); // Scroll til litt over toppen av container
+                 window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
              }
 
         } else {
@@ -91,26 +88,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const userAnswer = inputElement.value.trim().toUpperCase();
             const correctCode = correctCodes[`post${postNumber}`];
 
-            // Fjern tidligere feedback klasser for å unngå feil farge/bakgrunn
-            feedbackElement.className = 'feedback'; // Reset klasser
-            feedbackElement.textContent = ''; // Tøm tekst
+            feedbackElement.className = 'feedback';
+            feedbackElement.textContent = '';
 
             if (!userAnswer) {
                 feedbackElement.textContent = 'Du må skrive inn et svar!';
-                feedbackElement.classList.add('error', 'shake'); // Legg til error og shake
+                feedbackElement.classList.add('error', 'shake');
                 setTimeout(() => feedbackElement.classList.remove('shake'), 400);
                 inputElement.classList.add('shake');
                 setTimeout(() => inputElement.classList.remove('shake'), 400);
                 return;
             }
 
-            if (userAnswer === correctCode) {
-                feedbackElement.textContent = 'Helt riktig! 👍 Bra jobba!';
-                 feedbackElement.classList.add('success'); // Legg til success klasse
+            // ----- ENDRING HER: Lagt til || userAnswer === 'FASIT' -----
+            if (userAnswer === correctCode || userAnswer === 'FASIT') {
+                // Velg feedback basert på om det var FASIT eller riktig svar
+                if (userAnswer === 'FASIT') {
+                     feedbackElement.textContent = 'FASIT godkjent! Hopper videre...';
+                } else {
+                     feedbackElement.textContent = 'Helt riktig! 👍 Bra jobba!';
+                }
+                feedbackElement.classList.add('success');
 
-                // Deaktiver input og knapp etter korrekt svar
                 inputElement.disabled = true;
-                button.disabled = true; // JS setter disabled, CSS styler den
+                button.disabled = true;
 
                 setTimeout(() => {
                     const nextPostNumber = parseInt(postNumber) + 1;
@@ -119,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         showRebusPage('finale-page');
                     }
-                }, 1500);
+                }, 1000); // Litt kortere ventetid når man bruker FASIT
 
             } else {
                 feedbackElement.textContent = 'Hmm, det stemmer ikke helt. Prøv igjen!';
-                 feedbackElement.classList.add('error', 'shake'); // Legg til error og shake
+                 feedbackElement.classList.add('error', 'shake');
                 setTimeout(() => feedbackElement.classList.remove('shake'), 400);
                 inputElement.classList.add('shake');
                 setTimeout(() => inputElement.classList.remove('shake'), 400);
