@@ -69,24 +69,29 @@
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
-            <!-- POST 3 (ENDRET - Tilbake til oppgave med svar) -->
+            <!-- POST 3 (ENDRET - Lyd med oppgave, svar = 64) -->
             <div id="post-3-page" class="page">
-                <h2>Post 3: Vindusjakt 👁️‍🗨️</h2>
+                <h2>Post 3: Lytt og Løs 🎧</h2>
                  <p>
                      Gå nå til <strong>Skibladner-kaia</strong>.
                  </p>
                 <p>
-                    Se nøye på Skibladner (hvis den ligger til kai) eller bygget ved kaia. Hvor mange synlige vinduer kan dere telle totalt?
-                    <br><em>(Estimer hvis båten ikke er der, eller tell på bygget)</em>.
+                    Spill av lydfilen under for å få dagens oppgave. Skriv inn svaret du finner i feltet under.
                 </p>
-                <!-- Gjeninnført input, knapp og feedback -->
-                <input type="text" id="post-3-input" placeholder="Skriv antall vinduer">
+                 <!-- Audio-element for Post 3 -->
+                <audio controls style="margin-top: 10px; margin-bottom: 20px; width: 100%;">
+                    <!-- Viktig: Lydfilen må inneholde en oppgave hvor svaret er 64 -->
+                    <source src="audio/oppgave3.m4a" type="audio/mp4">
+                    <!-- Sørg for at filen audio/oppgave3.m4a finnes! -->
+                    Nettleseren din støtter ikke denne lydtypen. Spør en lærer. Oppgaven er: Hva er 8 x 8? Svaret er 64.
+                </audio>
+                <!-- Input, knapp og feedback for Post 3 -->
+                <input type="text" id="post-3-input" placeholder="Skriv svaret fra lydfilen">
                 <button class="check-answer-btn" data-post="3">Sjekk svar</button>
                 <div class="feedback" id="feedback-3"></div>
-                 <!-- Fjernet audio og "Gå videre"-knapp -->
             </div>
 
-            <!-- POST 4 (ENDRET - Tilbake til opprinnelig oppgave) -->
+            <!-- POST 4 (Tilbake til Letter Sequence) -->
             <div id="post-4-page" class="page">
                 <h2>Post 4: Letter Sequence 🔡</h2>
                  <p>
