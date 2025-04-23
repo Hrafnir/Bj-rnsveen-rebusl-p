@@ -22,7 +22,6 @@
             <!-- INTRODUKSJONSSIDE -->
             <div id="intro-page" class="page visible">
                 <h1>Velkommen til Bjørnsveen Ungdomsskoles Rebusløp!</h1>
-                <!-- <img src="images/skolelogo.png" alt="Bjørnsveen Ungdomsskole Logo" id="skole-logo"> -->
                 <h2>Den Store Utfordringen!</h2>
                 <p>
                     Klar for en dag med spenning og samarbeid? I dag skal dere ut på eventyr!
@@ -36,35 +35,41 @@
                 <button id="start-button">Start Rebusløpet!</button>
             </div>
 
-            <!-- POST 1 -->
+            <!-- POST 1 (ENDRET) -->
             <div id="post-1-page" class="page">
-                 <h2>Post 1: Aritmetisk tvist ➕➖➗</h2>
+                 <h2>Post 1: Opprop for Uniformer ✍️</h2>
                  <p>
-                     Først, finn veien til <strong>Gjøvik stasjon</strong>.
+                     Først, finn veien til <strong>Skateparken</strong>.
                  </p>
                  <p>
-                     Når dere er der: Regn ut hva 40 ÷ ½ + 2 blir.
+                     Der venter Ståle. Få et oppropsark og penn av ham.
                  </p>
-                 <input type="text" id="post-1-input" placeholder="Skriv svaret her">
+                 <p>
+                     <b>Oppdrag:</b> Få ti ulike personer til å skrive under på et opprop for rosa skoleuniformer på BUS.
+                 </p>
+                  <p>
+                     Når dere har 10 underskrifter, gå tilbake til Ståle. Han vil gi dere kodeordet til neste oppgave.
+                 </p>
+                 <input type="text" id="post-1-input" placeholder="Skriv kodeordet fra Ståle">
                  <button class="check-answer-btn" data-post="1">Sjekk svar</button>
                  <div class="feedback" id="feedback-1"></div>
              </div>
 
-            <!-- POST 2 -->
+            <!-- POST 2 (ENDRET) -->
             <div id="post-2-page" class="page">
-                <h2>Post 2: Triple Doubles 🤔</h2>
+                <h2>Post 2: Jakten på Mari 🤔</h2>
                  <p>
                      Neste stopp er <strong>Mjøspromenaden (Strandpromenaden)</strong>.
                  </p>
                 <p>
-                    Her skal dere finne et vanlig engelsk ord som har tre par med doble bokstaver etter hverandre (f.eks. ss, oo, mm).
+                    Finn Mari på promenaden. Hun har gjemt unna det neste kodeordet. Spør henne pent!
                 </p>
-                <input type="text" id="post-2-input" placeholder="Skriv det engelske ordet">
+                <input type="text" id="post-2-input" placeholder="Skriv kodeordet fra Mari">
                 <button class="check-answer-btn" data-post="2">Sjekk svar</button>
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
-            <!-- POST 3 -->
+            <!-- POST 3 (UENDRET) -->
             <div id="post-3-page" class="page">
                 <h2>Post 3: Gjemt i åpenhet 🤫</h2>
                  <p>
@@ -78,22 +83,27 @@
                 <div class="feedback" id="feedback-3"></div>
             </div>
 
-            <!-- POST 4 -->
+            <!-- POST 4 (ENDRET) -->
             <div id="post-4-page" class="page">
-                <h2>Post 4: Letter Sequence 🔡</h2>
+                <h2>Post 4: Lytt Nøye 🎧</h2>
                  <p>
                      Finn frem til <strong>Gjøvik kulturhus</strong>.
                  </p>
                 <p>
-                    Der skal dere finne neste bokstav i denne sekvensen:
-                    <br> A, C, F, J, O, …
+                    Spill av lydfilen under for å få neste ledetråd. Hvilken bokstav er det snakk om?
                 </p>
-                <input type="text" id="post-4-input" placeholder="Skriv neste bokstav">
+                <!-- Audio-element lagt til -->
+                <audio controls style="margin-top: 10px; width: 100%;">
+                    <source src="audio/oppgave4.m4a" type="audio/mp4">
+                    <!-- Viktig: Sørg for at filen audio/oppgave4.m4a finnes! -->
+                    Nettleseren din støtter ikke denne lydtypen. Kodeordet er U.
+                </audio>
+                <input type="text" id="post-4-input" placeholder="Skriv bokstaven du hørte">
                 <button class="check-answer-btn" data-post="4">Sjekk svar</button>
                 <div class="feedback" id="feedback-4"></div>
             </div>
 
-            <!-- POST 5 -->
+            <!-- POST 5 (UENDRET) -->
             <div id="post-5-page" class="page">
                 <h2>Post 5: Sifferlogikk 🔢</h2>
                  <p>
@@ -107,7 +117,7 @@
                 <div class="feedback" id="feedback-5"></div>
             </div>
 
-             <!-- POST 6 -->
+             <!-- POST 6 (UENDRET) -->
              <div id="post-6-page" class="page">
                 <h2>Post 6: Simple Algebra 🧮</h2>
                  <p>
@@ -121,7 +131,7 @@
                 <div class="feedback" id="feedback-6"></div>
             </div>
 
-             <!-- POST 7 -->
+             <!-- POST 7 (UENDRET) -->
              <div id="post-7-page" class="page">
                 <h2>Post 7: A Teapot Riddle ☕</h2>
                  <p>
@@ -135,7 +145,7 @@
                 <div class="feedback" id="feedback-7"></div>
             </div>
 
-             <!-- POST 8 -->
+             <!-- POST 8 (UENDRET) -->
              <div id="post-8-page" class="page">
                 <h2>Post 8: Odd to Even ❓</h2>
                  <p>
@@ -149,7 +159,7 @@
                 <div class="feedback" id="feedback-8"></div>
             </div>
 
-             <!-- POST 9 -->
+             <!-- POST 9 (UENDRET) -->
              <div id="post-9-page" class="page">
                 <h2>Post 9: Frosty Wordplay ☃️🧛</h2>
                  <p>
@@ -163,7 +173,7 @@
                 <div class="feedback" id="feedback-9"></div>
             </div>
 
-             <!-- POST 10 -->
+             <!-- POST 10 (UENDRET) -->
              <div id="post-10-page" class="page">
                 <h2>Post 10: Skritt i sanden 👣</h2>
                  <p>
@@ -198,7 +208,6 @@
             <h2>Kart over området</h2>
             <p>Bruk dette kartet for å finne frem til postene.</p>
             <img src="images/kart.png" alt="Kart over rebusløp-området" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 15px;">
-            <!-- Pass på at bildet images/kart.png finnes! -->
              <p style="font-size: 0.9em; margin-top: 10px;">(Trykk på 'Rebus'-fanen for å gå tilbake til oppgavene)</p>
         </div>
 
