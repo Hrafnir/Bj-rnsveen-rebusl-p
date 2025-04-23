@@ -13,7 +13,6 @@
         <!-- Tab Navigasjon -->
         <div class="tabs">
             <button class="tab-button active" data-tab="rebus">Rebus</button>
-            <!-- ENDRET data-tab her fra "kart" til "map" for å matche div ID -->
             <button class="tab-button" data-tab="map">Kart</button>
         </div>
 
@@ -26,34 +25,39 @@
                 <!-- <img src="images/skolelogo.png" alt="Bjørnsveen Ungdomsskole Logo" id="skole-logo"> -->
                 <h2>Den Store Utfordringen!</h2>
                 <p>
-                    Klar for en dag med spenning og samarbeid? I dag skal dere ut på eventyr rundt på skolens område (og kanskje litt utenfor)!
+                    Klar for en dag med spenning og samarbeid? I dag skal dere ut på eventyr!
                 </p>
                 <p>
-                    Løs oppgavene på hver post for å finne <strong>10 hemmelige kodeord</strong>. Denne appen hjelper dere med å holde styr på fremdriften og sjekke svarene deres.
+                    Følg instruksjonene for å gå til hver post. Løs oppgaven der for å finne <strong>10 hemmelige kodeord</strong>. Denne appen hjelper dere med å holde styr på fremdriften og sjekke svarene.
                 </p>
                 <p>
-                    Følg instruksjonene nøye og bruk kartet om dere trenger det. Lykke til!
+                    Bruk kartet om dere trenger det. Lykke til!
                 </p>
-                <!-- Fjernet <audio> tag for bakgrunnsmusikk -->
                 <button id="start-button">Start Rebusløpet!</button>
             </div>
 
             <!-- POST 1 -->
             <div id="post-1-page" class="page">
-                <h2>Post 1: Aritmetisk tvist ➕➖➗</h2>
-                <p>
-                    Regn ut: Hva er 40 ÷ ½ + 2 ?
-                </p>
-                <input type="text" id="post-1-input" placeholder="Skriv svaret her">
-                <button class="check-answer-btn" data-post="1">Sjekk svar</button>
-                <div class="feedback" id="feedback-1"></div>
-            </div>
+                 <h2>Post 1: Aritmetisk tvist ➕➖➗</h2>
+                 <p>
+                     Først, finn veien til <strong>Gjøvik stasjon</strong>.
+                 </p>
+                 <p>
+                     Når dere er der: Regn ut hva 40 ÷ ½ + 2 blir.
+                 </p>
+                 <input type="text" id="post-1-input" placeholder="Skriv svaret her">
+                 <button class="check-answer-btn" data-post="1">Sjekk svar</button>
+                 <div class="feedback" id="feedback-1"></div>
+             </div>
 
             <!-- POST 2 -->
             <div id="post-2-page" class="page">
                 <h2>Post 2: Triple Doubles 🤔</h2>
+                 <p>
+                     Neste stopp er <strong>Mjøspromenaden (Strandpromenaden)</strong>.
+                 </p>
                 <p>
-                    Hvilket vanlig engelsk ord har tre par med doble bokstaver etter hverandre? (f.eks. ss, oo, mm)
+                    Her skal dere finne et vanlig engelsk ord som har tre par med doble bokstaver etter hverandre (f.eks. ss, oo, mm).
                 </p>
                 <input type="text" id="post-2-input" placeholder="Skriv det engelske ordet">
                 <button class="check-answer-btn" data-post="2">Sjekk svar</button>
@@ -63,8 +67,11 @@
             <!-- POST 3 -->
             <div id="post-3-page" class="page">
                 <h2>Post 3: Gjemt i åpenhet 🤫</h2>
+                 <p>
+                     Gå nå til <strong>Skibladner-kaia</strong>.
+                 </p>
                 <p>
-                    Hvis du deler meg, har du meg ikke lenger. Hva er jeg?
+                    Tenk nøye: Hvis du deler meg, har du meg ikke lenger. Hva er jeg?
                 </p>
                 <input type="text" id="post-3-input" placeholder="Skriv løsningsordet">
                 <button class="check-answer-btn" data-post="3">Sjekk svar</button>
@@ -74,8 +81,11 @@
             <!-- POST 4 -->
             <div id="post-4-page" class="page">
                 <h2>Post 4: Letter Sequence 🔡</h2>
+                 <p>
+                     Finn frem til <strong>Gjøvik kulturhus</strong>.
+                 </p>
                 <p>
-                    Hvilken bokstav kommer etter O i denne sekvensen?
+                    Der skal dere finne neste bokstav i denne sekvensen:
                     <br> A, C, F, J, O, …
                 </p>
                 <input type="text" id="post-4-input" placeholder="Skriv neste bokstav">
@@ -86,8 +96,11 @@
             <!-- POST 5 -->
             <div id="post-5-page" class="page">
                 <h2>Post 5: Sifferlogikk 🔢</h2>
+                 <p>
+                     Turen går videre til <strong>Gjøvik kirke</strong>.
+                 </p>
                 <p>
-                    Jeg er et tresifret tall. Tiersifferet er 5 større enn enersifferet. Hundrersifferet er 8 mindre enn tiersifferet. Hvilket tall er jeg?
+                    Tenk på et tresifret tall: Tiersifferet er 5 større enn enersifferet. Hundrersifferet er 8 mindre enn tiersifferet. Hvilket tall er det?
                 </p>
                 <input type="text" id="post-5-input" placeholder="Skriv tallet">
                 <button class="check-answer-btn" data-post="5">Sjekk svar</button>
@@ -97,8 +110,11 @@
              <!-- POST 6 -->
              <div id="post-6-page" class="page">
                 <h2>Post 6: Simple Algebra 🧮</h2>
+                 <p>
+                     Sett kursen mot <strong>Vitensenteret Innlandet</strong>.
+                 </p>
                 <p>
-                    Jeg tenker på et tall. Ganger jeg det med 3 og legger til 6, får jeg 21. Hvilket tall tenker jeg på?
+                    Når dere er fremme: Jeg tenker på et tall. Ganger jeg det med 3 og legger til 6, får jeg 21. Hvilket tall tenker jeg på?
                 </p>
                 <input type="text" id="post-6-input" placeholder="Skriv tallet">
                 <button class="check-answer-btn" data-post="6">Sjekk svar</button>
@@ -108,8 +124,11 @@
              <!-- POST 7 -->
              <div id="post-7-page" class="page">
                 <h2>Post 7: A Teapot Riddle ☕</h2>
+                 <p>
+                     Neste mål er <strong>Kauffeldtgården</strong>.
+                 </p>
                 <p>
-                   Hvilket engelsk ord starter med T, slutter med T, og har T (tea) inni seg?
+                   Finn det engelske ordet som starter med T, slutter med T, og har T (tea) inni seg.
                 </p>
                 <input type="text" id="post-7-input" placeholder="Skriv det engelske ordet">
                 <button class="check-answer-btn" data-post="7">Sjekk svar</button>
@@ -119,8 +138,11 @@
              <!-- POST 8 -->
              <div id="post-8-page" class="page">
                 <h2>Post 8: Odd to Even ❓</h2>
+                 <p>
+                     Gå til <strong>Gjøvik Gård</strong>.
+                 </p>
                 <p>
-                    Jeg er et oddetall (på engelsk). Tar du vekk én bokstav, blir jeg et partall (even). Hvilket tall er jeg?
+                    Hvilket engelsk oddetall blir et partall (even) hvis du fjerner én bokstav?
                 </p>
                 <input type="text" id="post-8-input" placeholder="Skriv tallet (på engelsk)">
                 <button class="check-answer-btn" data-post="8">Sjekk svar</button>
@@ -130,6 +152,9 @@
              <!-- POST 9 -->
              <div id="post-9-page" class="page">
                 <h2>Post 9: Frosty Wordplay ☃️🧛</h2>
+                 <p>
+                     Finn veien opp til <strong>Eiktunet</strong>.
+                 </p>
                 <p>
                     Hva får du (på engelsk) hvis du krysser en snømann med en vampyr?
                 </p>
@@ -141,8 +166,11 @@
              <!-- POST 10 -->
              <div id="post-10-page" class="page">
                 <h2>Post 10: Skritt i sanden 👣</h2>
+                 <p>
+                     Siste etappe går til <strong>Strandparken</strong>.
+                 </p>
                 <p>
-                    Jo mer du tar, desto flere etterlater du. Hva er jeg?
+                    Tenk over dette: Jo mer du tar, desto flere etterlater du. Hva er jeg?
                 </p>
                 <input type="text" id="post-10-input" placeholder="Skriv løsningsordet">
                 <button class="check-answer-btn" data-post="10">Sjekk svar</button>
@@ -166,7 +194,6 @@
         </div> <!-- Slutt på rebus-content -->
 
         <!-- Innhold for Kart -->
-        <!-- ID her er "map-content", som nå matcher data-tab="map" -->
         <div id="map-content" class="tab-content">
             <h2>Kart over området</h2>
             <p>Bruk dette kartet for å finne frem til postene.</p>
