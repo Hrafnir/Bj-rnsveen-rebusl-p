@@ -102,8 +102,6 @@ img {
     height: auto;
     margin-bottom: 15px;
 }
-/* #bursdagsbilde spesifikk stil fjernet, bruk generisk img eller legg til ny id */
-
 
 /* Paragrafer */
 p {
@@ -210,6 +208,6 @@ button:hover {
 
 
 /* Skjul standard lydkontroller (valgfritt) */
-#background-music {
-/*     display: none; */ /* Fjern kommentar for å skjule helt */
-}
+/* #background-music { */
+/*     display: none; */ /* Kan fjernes helt nå */
+/* } */
