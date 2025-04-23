@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bjørnsveen Ungdomsskole Rebusløp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Tab Navigasjon -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="rebus">Rebus</button>
+            <button class="tab-button" data-tab="kart">Kart</button>
+        </div>
+
+        <!-- Innhold for Rebus -->
+        <div id="rebus-content" class="tab-content visible">
+
+            <!-- INTRODUKSJONSSIDE -->
+            <div id="intro-page" class="page visible">
+                <h1>Velkommen til Bjørnsveen Ungdomsskoles Rebusløp!</h1>
+                <!-- <img src="images/skolelogo.png" alt="Bjørnsveen Ungdomsskole Logo" id="skole-logo"> -->
+                <h2>Den Store Utfordringen!</h2>
+                <p>
+                    Klar for en dag med spenning og samarbeid? I dag skal dere ut på eventyr rundt på skolens område (og kanskje litt utenfor)!
+                </p>
+                <p>
+                    Løs oppgavene på hver post for å finne <strong>10 hemmelige kodeord</strong>. Denne appen hjelper dere med å holde styr på fremdriften og sjekke svarene deres.
+                </p>
+                <p>
+                    Følg instruksjonene nøye og bruk kartet om dere trenger det. Lykke til!
+                </p>
+                <!-- Audio-tag med autoplay og muted -->
+                <audio id="background-music" loop autoplay muted>
+                    <source src="audio/bakgrunnsmusikk.mp3" type="audio/mpeg">
+                    Nettleseren din støtter ikke lydavspilling.
+                </audio>
+                <button id="start-button">Start Rebusløpet!</button>
+            </div>
+
+            <!-- POST 1 -->
+            <div id="post-1-page" class="page">
+                <h2>Post 1: Skolens Hjerte ❤️</h2>
+                <p>
+                    Gå til hovedinngangen. Se på døren. Hvilket <strong>fag</strong> undervises ofte i rommet rett innenfor til venstre (tenk språk)?
+                </p>
+                <input type="text" id="post-1-input" placeholder="Skriv fagnavnet her">
+                <button class="check-answer-btn" data-post="1">Sjekk svar</button>
+                <div class="feedback" id="feedback-1"></div>
+            </div>
+
+            <!-- POST 2 -->
+            <div id="post-2-page" class="page">
+                <h2>Post 2: Kunnskapens Tårn 📚</h2>
+                <p>
+                    Finn skolens bibliotek. Hvor mange store vinduer vender ut mot skolegården fra biblioteket? Svaret er <strong>tallet skrevet med bokstaver</strong>.
+                </p>
+                <input type="text" id="post-2-input" placeholder="Skriv tallet med bokstaver">
+                <button class="check-answer-btn" data-post="2">Sjekk svar</button>
+                <div class="feedback" id="feedback-2"></div>
+            </div>
+
+            <!-- POST 3 -->
+            <div id="post-3-page" class="page">
+                <h2>Post 3: Idrettsglede ⚽</h2>
+                <p>
+                    Gå til gymsalen. Hva slags <strong>dyr</strong> finner dere ofte avbildet på utstyr her (tenk baller, lag)?
+                </p>
+                <input type="text" id="post-3-input" placeholder="Skriv dyrenavnet">
+                <button class="check-answer-btn" data-post="3">Sjekk svar</button>
+                <div class="feedback" id="feedback-3"></div>
+            </div>
+
+            <!-- POST 4 -->
+            <div id="post-4-page" class="page">
+                <h2>Post 4: Grønn Lunge 🌳</h2>
+                <p>
+                    Finn det største treet i skolegården. Hvilken <strong>årstid</strong> mister dette treet bladene sine?
+                </p>
+                <input type="text" id="post-4-input" placeholder="Skriv årstiden">
+                <button class="check-answer-btn" data-post="4">Sjekk svar</button>
+                <div class="feedback" id="feedback-4"></div>
+            </div>
+
+            <!-- POST 5 -->
+            <div id="post-5-page" class="page">
+                <h2>Post 5: Kreativ Sone 🎨</h2>
+                <p>
+                    Gå til Kunst & Håndverksrommet. Hvilken <strong>farge</strong> får du hvis du blander blått og gult?
+                </p>
+                <input type="text" id="post-5-input" placeholder="Skriv fargen">
+                <button class="check-answer-btn" data-post="5">Sjekk svar</button>
+                <div class="feedback" id="feedback-5"></div>
+            </div>
+
+             <!-- POST 6 -->
+             <div id="post-6-page" class="page">
+                <h2>Post 6: Digital Verden 💻</h2>
+                <p>
+                    Finn datarommet (eller et sted med mange PC-er). Hva kalles den lille pilen du styrer med musa på skjermen? (Et annet ord for 'peker')
+                </p>
+                <input type="text" id="post-6-input" placeholder="Skriv ordet">
+                <button class="check-answer-btn" data-post="6">Sjekk svar</button>
+                <div class="feedback" id="feedback-6"></div>
+            </div>
+
+             <!-- POST 7 -->
+             <div id="post-7-page" class="page">
+                <h2>Post 7: Musikkens Magi 🎶</h2>
+                <p>
+                    Gå til musikkrommet. Hva heter instrumentet med mange svarte og hvite tangenter?
+                </p>
+                <input type="text" id="post-7-input" placeholder="Skriv instrumentnavnet">
+                <button class="check-answer-btn" data-post="7">Sjekk svar</button>
+                <div class="feedback" id="feedback-7"></div>
+            </div>
+
+             <!-- POST 8 -->
+             <div id="post-8-page" class="page">
+                <h2>Post 8: Mat og Helse 🍎</h2>
+                <p>
+                    Finn skolekjøkkenet. Hva kalles det hvite pulveret man ofte bruker for å bake brød og kaker?
+                </p>
+                <input type="text" id="post-8-input" placeholder="Skriv ingrediensen">
+                <button class="check-answer-btn" data-post="8">Sjekk svar</button>
+                <div class="feedback" id="feedback-8"></div>
+            </div>
+
+             <!-- POST 9 -->
+             <div id="post-9-page" class="page">
+                <h2>Post 9: Rektors Rike 👑</h2>
+                <p>
+                    Finn kontoret til rektor eller administrasjonen. Hva er det viktigste <strong>verktøyet</strong> en elev trenger hver dag (utenom hodet)?
+                </p>
+                <input type="text" id="post-9-input" placeholder="Skriv verktøyet">
+                <button class="check-answer-btn" data-post="9">Sjekk svar</button>
+                <div class="feedback" id="feedback-9"></div>
+            </div>
+
+             <!-- POST 10 -->
+             <div id="post-10-page" class="page">
+                <h2>Post 10: Samlingspunktet 📣</h2>
+                <p>
+                    Gå til skolens aula eller kantine (det største samlingsrommet). Hva kalles en person som jobber på skolen og underviser elever?
+                </p>
+                <input type="text" id="post-10-input" placeholder="Skriv yrkestittelen">
+                <button class="check-answer-btn" data-post="10">Sjekk svar</button>
+                <div class="feedback" id="feedback-10"></div>
+            </div>
+
+
+            <!-- FINALE -->
+            <div id="finale-page" class="page">
+                <h1>FANTASTISK JOBBET! 🎉</h1>
+                <h2>Alle 10 kodeord er funnet!</h2>
+                <p>
+                    Dere har vist supert samarbeid og skarpe hjerner! 🧠💡
+                </p>
+                <p>
+                   Nå er rebusløpet fullført! Gå til samlingspunktet som lærerne har bestemt for en velfortjent avslutning!
+                </p>
+                <h2>Godt jobbet, Bjørnsveen-elever! 👍</h2>
+            </div>
+
+        </div> <!-- Slutt på rebus-content -->
+
+        <!-- Innhold for Kart -->
+        <div id="map-content" class="tab-content">
+            <h2>Kart over området</h2>
+            <p>Bruk dette kartet for å finne frem til postene.</p>
+            <img src="images/kart.png" alt="Kart over rebusløp-området" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 15px;">
+            <!-- Pass på at bildet images/kart.png finnes! -->
+             <p style="font-size: 0.9em; margin-top: 10px;">(Trykk på 'Rebus'-fanen for å gå tilbake til oppgavene)</p>
+        </div>
+
+    </div> <!-- Slutt på container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
